@@ -1,0 +1,35 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: com-gabhasti-product-currency
+spec:
+  selector:
+    matchLabels:
+      app: com-gabhasti-product-currency # a lable to match with other services(Objects eg: Service)
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: com-gabhasti-product-currency
+    spec:
+      containers:
+      - name: com-gabhasti-product-currency
+        image: gabhastiharishscf/com-gabhasti-product-currency
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081           
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: com-gabhasti-product-currency
+spec:
+  type: NodePort
+  selector:
+    app: com-gabhasti-product-currency
+  ports:
+    - protocol: TCP
+      port: 8081
+      name: http
