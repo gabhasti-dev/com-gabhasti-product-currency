@@ -19,7 +19,7 @@ spec:
         ports:
         - containerPort: 8081           
       imagePullSecrets:
-      - name: regcred
+      - name: gabhastiharishscf
 ---
 apiVersion: v1
 kind: Service
