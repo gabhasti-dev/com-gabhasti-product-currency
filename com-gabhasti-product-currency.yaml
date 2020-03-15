@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: com-gabhasti-product-currency
-        image: gabhastiharishscf/com-gabhasti-product-currency
+        image: gabhastiharishscf/com-gabhasti-product-currency:1.0.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8081           
